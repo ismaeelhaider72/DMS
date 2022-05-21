@@ -3,15 +3,10 @@ terraform {
 }
 
 provider "aws" {
+  region  = var.region-primary
   default_tags {
     tags = {
       example          = "DMS"
     }
   }
-}
-
-provider "aws" {
-  # profile = var.profile
-  region  = var.region-primary
-  alias   = "region-primary"
 }
