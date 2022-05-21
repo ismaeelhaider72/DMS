@@ -57,7 +57,6 @@ resource "aws_dms_replication_task" "dms-task" {
 
 # Create a new replication subnet group
 resource "aws_dms_replication_subnet_group" "subnet_group" {
-  provider                 = aws.region-primary
   replication_subnet_group_description = "DMS Replication subnet group"
   replication_subnet_group_id          = "${var.name}-dms-replication-subnet-group"
 
@@ -69,7 +68,6 @@ resource "aws_dms_replication_subnet_group" "subnet_group" {
 
 
 resource "aws_security_group" "security_group_dms" {
-  provider    = aws.region-primary
   name        = "security_group_dms"
   description = "TCP/22"
   vpc_id      = var.vpc_id 
