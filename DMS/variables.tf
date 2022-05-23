@@ -96,6 +96,11 @@ variable "migration_type" {
   default     = null
 }
 
+variable "table_mappings" {
+  description = "An escaped JSON string that contains the table mappings."
+  type        = string
+}
+
 variable "tags" {
   type        = map(string)
   default     = {}
