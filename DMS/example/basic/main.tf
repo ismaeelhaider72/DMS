@@ -7,7 +7,7 @@ module "vpc" {
 }
 
 locals {
-  name = "test-dms"
+  name = "basic-dms"
 }
 
 module "dms" {
