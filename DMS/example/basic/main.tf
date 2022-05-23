@@ -14,7 +14,7 @@ module "dms" {
 
   source = "../.."
 
-  region_primary = "us-east-1"
+  primary_region = "us-east-1"
 
   name = local.name
 
