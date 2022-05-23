@@ -43,9 +43,4 @@ module "dms" {
   migration_type      = "full-load-and-cdc"
   table_mappings      = file("${path.module}/configs/table_mappings.json")
 
-  tags = {
-    Name = "test"
-  }
 }
-
-
