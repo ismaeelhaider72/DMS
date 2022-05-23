@@ -66,6 +66,12 @@ variable "replication_instance_class" {
   default     = null
 }
 
+variable "replication_instance_storage" {
+  description = "The amount of storage (in gigabytes) to be initially allocated for the replication instance. Min: 5, Max: 6144, Default: 50"
+  type        = number
+  default     = null
+}
+
 variable "replication_instance_engine_version" {
   description = "The engine version number of the replication instance."
   type        = string
@@ -90,17 +96,8 @@ variable "migration_type" {
   default     = null
 }
 
-variable "replication_instance_storage" {
-  description = "The amount of storage (in gigabytes) to be initially allocated for the replication instance. Min: 5, Max: 6144, Default: 50"
-  type        = number
-  default     = null
-}
-
 variable "tags" {
   type        = map(string)
   default     = {}
   description = "Additional tags associated with all dms resources."
 }
-
-
-
