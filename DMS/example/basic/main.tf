@@ -42,5 +42,9 @@ module "dms" {
   replication_task_id = "${local.name}-replication-task-dms" #change
   migration_type      = "full-load-and-cdc"
   table_mappings      = file("${path.module}/configs/table_mappings.json")
-
+      
+  tags = {
+    Name = "basic-dms"
+  }
+      
 }
