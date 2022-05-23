@@ -22,7 +22,7 @@ data "aws_iam_policy_document" "dms_assume_role" {
 #Create DMS role for CloudWatch Logging
 resource "aws_iam_role" "dms-cloudwatch-logs-role" { 
   assume_role_policy = data.aws_iam_policy_document.dms_assume_role.json
-  name               = "dms-cloudwatch-logs-role"
+  name               = "${var.name}-cloudwatch-logs-role"
 }
 
 #Attach DMSCloudWatchLogsRole Policy to the DMS role for CloudWatch
@@ -40,7 +40,7 @@ resource "aws_iam_role_policy_attachment" "dms-cloudwatch-logs-role-AmazonDMSClo
 
 resource "aws_iam_role" "dms-vpc-role" {
   assume_role_policy  = data.aws_iam_policy_document.dms_assume_role.json
-  name                = "dms-vpc-role"
+  name                = "${var.name}-vpc-role"
   # managed_policy_arns = ["arn:aws:iam::aws:policy/service-role/AmazonDMSVPCManagementRole"]
   inline_policy {
     name   = "dms-vpc-role-policy"
