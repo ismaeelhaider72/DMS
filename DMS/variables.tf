@@ -3,7 +3,7 @@ variable "name" {
   description = "The unique name of the DMS."
 }
 
-variable "region_primary" {
+variable "primary_region" {
   type        = string
   description = "Region in which data migratin servive will deploy."
 }
