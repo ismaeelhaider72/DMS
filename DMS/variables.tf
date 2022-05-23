@@ -96,44 +96,11 @@ variable "replication_instance_storage" {
   default     = null
 }
 
-
-
-# variable "region_secondary" {
-#   type    = string
-#   default = "us-west-2"
-# }
-
-# variable "aws_profile" {
-#   type    = string
-#   default = "default"
-# }
-################################################################
-# repl_subnet_group_subnet_ids  = ["subnet-1fe3d837", "subnet-129d66ab", "subnet-1211eef5"] #change
-
-
-
-# replicationsubnet_group_name
-
-
-# variable "subnet_1" {
-#   type        = string
-# }
-
-# variable "subnet_2" {
-#   type        = string
-# }
-
-##############
-
 variable "tags" {
   type        = map(string)
   default     = {}
-  description = "Additional tags associated with the SNS topic."
+  description = "Additional tags associated with all dms resources."
 }
 
-# locals {
-#   primary_rds_endpoint   = aws_db_instance.source_mysql_rds-1.address
-#   secondary_rds_endpoint = aws_db_instance.target_mysql_rds-1.address
-# }
 
 
