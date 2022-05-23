@@ -1,4 +1,4 @@
-variable "region_primary" {
+variable "primary_region" {
   type    = string
   default = ""
 }
