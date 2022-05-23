@@ -1,6 +1,5 @@
 #Get the DMS Assume Role Policy document
 data "aws_iam_policy_document" "dms_assume_role" {
-  # provider          = aws.region_primary
   statement {
     actions = ["sts:AssumeRole"]
 
@@ -12,15 +11,13 @@ data "aws_iam_policy_document" "dms_assume_role" {
 }
 
 #Create DMS role for CloudWatch Logging
-resource "aws_iam_role" "dms-cloudwatch-logs-role" {
-  # provider          = aws.region_primary  
+resource "aws_iam_role" "dms-cloudwatch-logs-role" { 
   assume_role_policy = data.aws_iam_policy_document.dms_assume_role.json
   name               = "dms-cloudwatch-logs-role"
 }
 
 #Attach DMSCloudWatchLogsRole Policy to the DMS role for CloudWatch
 resource "aws_iam_role_policy_attachment" "dms-cloudwatch-logs-role-AmazonDMSCloudWatchLogsRole" {
-  # provider          = aws.region_primary
   policy_arn = "arn:aws:iam::aws:policy/service-role/AmazonDMSCloudWatchLogsRole"
   role       = aws_iam_role.dms-cloudwatch-logs-role.name
 }
