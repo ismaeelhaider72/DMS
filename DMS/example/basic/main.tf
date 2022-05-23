@@ -24,7 +24,6 @@ module "dms" {
   secondary_db_username = "username"
   secondary_db_password = "password"
 
-  vpc_id                     = module.vpc.vpc_id 
   primary_rds_endpoint_key   = module.rds.primary_rds_endpoint
   secondary_rds_endpoint_key = module.rds.secondary_rds_endpoint
 
@@ -35,6 +34,8 @@ module "dms" {
   # A value of true represents an instance with a public IP address. A value of false represents an instance with a private IP address
   replication_instance_publicly_accessible = false
 
+  # vpc id of primary virtual private cloud   
+  vpc_id                        = module.vpc.vpc_id     
   replication_subnet_group_name = "${local.name}-replication-subnet-group"
   # At least two subnet with different Availability zones  
   replication_subnet_group_subnet_ids = [module.vpc.aws_subnet_1, module.vpc.aws_subnet_2] #change
