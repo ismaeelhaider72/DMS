@@ -8,7 +8,7 @@ resource "aws_dms_endpoint" "primary_endpoint" {
   port          = 3306
   server_name   = var.primary_rds_endpoint_key
   ssl_mode      = "none"
-  tags          = merge(var.tags, { Name = "${var.name}-primary-dms-endpoint" })
+  tags          = merge(var.tags, { Name = "${var.name}-primary-rds-endpoint" })
   depends_on    = [aws_dms_replication_instance.dms-instance, aws_dms_replication_subnet_group.dms_subnet_group]
 }
 
@@ -22,7 +22,7 @@ resource "aws_dms_endpoint" "secondary_endpoint" {
   port          = 3306
   server_name   = var.secondary_rds_endpoint_key
   ssl_mode      = "none"
-  tags          = merge(var.tags, { Name = "${var.name}-secondary-dms-endpoint" })
+  tags          = merge(var.tags, { Name = "${var.name}-secondary-rds-endpoint" })
 }
 
 #Creating a replication  instance for DMS
@@ -41,7 +41,7 @@ resource "aws_dms_replication_instance" "dms-instance" {
   ]
   replication_subnet_group_id = aws_dms_replication_subnet_group.dms_subnet_group.replication_subnet_group_id
 
-  tags = merge(var.tags, { Name = "${var.name}-dms-replication-instance" })
+  tags = merge(var.tags, { Name = "${var.name}-replication-instance" })
 }
 
 # Create a new replication task for defining what type of migration we want and which tables we want to migrate
@@ -52,7 +52,7 @@ resource "aws_dms_replication_task" "dms-task" {
   source_endpoint_arn      = aws_dms_endpoint.primary_endpoint.endpoint_arn
   table_mappings           = file("${path.module}/table_mappings.json")
   target_endpoint_arn      = aws_dms_endpoint.secondary_endpoint.endpoint_arn
-  tags                     = merge(var.tags, { Name = "${var.name}-dms-replicatio-task" })
+  tags                     = merge(var.tags, { Name = "${var.name}-replicatio-task" })
 
 }
 
@@ -62,7 +62,7 @@ resource "aws_dms_replication_subnet_group" "dms_subnet_group" {
   replication_subnet_group_description = "DMS Replication subnet group"
   subnet_ids                           = var.replication_subnet_group_subnet_ids
 
-  tags = merge(var.tags, { Name = "${var.name}-dms-replication-subnet-group" })
+  tags = merge(var.tags, { Name = "${var.name}-replication-subnet-group" })
 
 }
 
