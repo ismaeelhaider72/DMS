@@ -23,7 +23,6 @@ resource "aws_dms_endpoint" "secondary_endpoint" {
   server_name   = var.secondary_rds_endpoint_key
   ssl_mode      = "none"
   tags          = merge(var.tags, { Name = "${var.name}-secondary-dms-endpoint" })
-  # depends_on = [aws_dms_replication_instance.dms-instance,aws_dms_replication_subnet_group.dms_subnet_group] 
 }
 
 #Creating a replication  instance for DMS
@@ -42,7 +41,6 @@ resource "aws_dms_replication_instance" "dms-instance" {
   ]
   replication_subnet_group_id = aws_dms_replication_subnet_group.dms_subnet_group.replication_subnet_group_id
 
-  # depends_on = [aws_iam_role.dms-vpc-role,aws_dms_replication_subnet_group.dms_subnet_group]
   tags = merge(var.tags, { Name = "${var.name}-dms-replication-instance" })
 }
 
