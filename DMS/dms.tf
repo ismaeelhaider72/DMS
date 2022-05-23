@@ -40,6 +40,8 @@ resource "aws_dms_replication_instance" "dms-instance" {
     aws_security_group.security_group_dms.id
   ]
   replication_subnet_group_id = aws_dms_replication_subnet_group.dms_subnet_group.replication_subnet_group_id
+  
+  depends_on = [aws_iam_role.dms-vpc-role]
 
   tags = merge(var.tags, { Name = "${var.name}-replication-instance" })
 }
