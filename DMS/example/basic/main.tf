@@ -18,11 +18,11 @@ module "dms" {
 
   name = local.name
 
-  primary_db_username = "admin"
-  primary_db_password = "adminadmin"
+  primary_db_username = "username"
+  primary_db_password = "password"
 
-  secondary_db_username = "admin"
-  secondary_db_password = "adminadmin"
+  secondary_db_username = "username"
+  secondary_db_password = "password"
 
   vpc_id                     = module.vpc.vpc_id 
   primary_rds_endpoint_key   = module.rds.primary_rds_endpoint
