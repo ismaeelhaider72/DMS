@@ -91,7 +91,7 @@ resource "aws_security_group" "security_group_dms" {
 resource "null_resource" "start_replicating" {
   triggers = {
     dms_task_arn = aws_dms_replication_task.dms-task.replication_task_arn
-    region       = var.region_primary
+    region       = var.primary_region
   }
   provisioner "local-exec" {
     when    = create
