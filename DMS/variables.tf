@@ -83,7 +83,7 @@ variable "replication_instance_publicly_accessible" {
   type        = bool
   default     = null
 }
-# replication_task_id
+
 variable "replication_task_id" {
   description = "The replication task identifier. This parameter is stored as a lowercase string"
   type        = string
