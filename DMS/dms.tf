@@ -50,7 +50,7 @@ resource "aws_dms_replication_task" "dms-task" {
   replication_instance_arn = aws_dms_replication_instance.dms-instance.replication_instance_arn
   replication_task_id      = var.replication_task_id
   source_endpoint_arn      = aws_dms_endpoint.primary_endpoint.endpoint_arn
-  table_mappings           = file("${path.module}/table_mappings.json")
+  table_mappings           = var.table_mappings
   target_endpoint_arn      = aws_dms_endpoint.secondary_endpoint.endpoint_arn
   tags                     = merge(var.tags, { Name = "${var.name}-replicatio-task" })
 
