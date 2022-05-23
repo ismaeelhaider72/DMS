@@ -11,5 +11,5 @@ terraform {
 }
 
 provider "aws" {
-  region = var.region_primary
+  region = var.primary_region
 }
