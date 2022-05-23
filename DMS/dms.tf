@@ -71,7 +71,7 @@ resource "aws_security_group" "security_group_dms" {
   description = "TCP/22"
   vpc_id      = var.vpc_id
   ingress {
-    description = "Allow all traffic 22 from our public IP"
+    description = "Allow all traffic 3306 from our public IP"
     from_port   = 0
     to_port     = 0
     protocol    = "-1"
